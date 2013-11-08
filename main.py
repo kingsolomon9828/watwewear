@@ -30,10 +30,16 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.out.write('Hello, webapp World!')
-        template = JINJA_ENVIRONMENT.get_template('')
-        self.response.write(template.render({'': }))
+        user = users.get_current_user()
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+                          (user.nickname(), users.create_logout_url('/')))
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+                        users.create_login_url('/'))
+                        
+        template = JINJA_ENVIRONMENT.get_template('home.html')
+        self.response.write(template.render({'greeting': greeting}))
 
-app = webapp2.WSGIApplication([('/', MainPage)],
+application = webapp2.WSGIApplication([('/', MainPage)],
                               debug=True)
