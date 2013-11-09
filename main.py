@@ -92,8 +92,10 @@ class ThankYouPageHandler(webapp2.RequestHandler):
             newUser = User()
         newUser.username = users.get_current_user()
         date = datetime.datetime.now().strftime("%m%d%y")
-        #if date not in newUser.top:
-        newUser.top[date] = []
+        if not newUser.top:
+            newUser.top = {}
+        if date not in newUser.top:
+            newUser.top[date] = []
         newUser.top[date].append({"day": day,
                         "top_category": top_category,
                         "top_presence": top_presence,
@@ -101,8 +103,10 @@ class ThankYouPageHandler(webapp2.RequestHandler):
                         "top_clothing_color": top_clothing_color,
                         "top_img": "",                        
                       })
-        #if date not in newUser.bottom:
-        newUser.bottom[date] = []
+        if not newUser.bottom:
+            newUser.bottom = {}
+        if date not in newUser.bottom:
+            newUser.bottom[date] = []
         newUser.bottom[date].append({"day": day,
                         "bot_category": bot_category,
                         "bot_presence": bot_presence,
@@ -110,8 +114,10 @@ class ThankYouPageHandler(webapp2.RequestHandler):
                         "bot_clothing_color": bot_clothing_color,
                         "bot_img": "",
                         })
-        #if date not in newUser.shoes:
-        newUser.shoes[date] = []
+        if not newUser.shoes:
+            newUser.shoes = {}
+        if date not in newUser.shoes:
+            newUser.shoes[date] = []
         newUser.shoes[date].append({"day": day,
                         "shoe_type": shoe_type,
                         "shoe_color": shoe_color,
