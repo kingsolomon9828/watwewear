@@ -10,7 +10,7 @@ handlers:
 - url: .*
   script: main.application
   login: required
-- url: /assets
+- url: /assets/*
   static_dir: assets
 
 libraries:
