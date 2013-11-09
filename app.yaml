@@ -7,11 +7,15 @@ api_version: 1
 
 threadsafe: true
 handlers:
+- url: /clothes-pics
+  static_dir: clothes-pics 
+
+- url: /assets
+  static_dir: assets
+
 - url: .*
   script: main.application
   login: required
-- url: /assets/*
-  static_dir: assets
 
 libraries:
 - name: jinja2
