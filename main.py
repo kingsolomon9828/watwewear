@@ -145,14 +145,6 @@ class chooseOutfitHandler(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('choose-outfit.html')
         self.response.write(template.render())
-
-class rateOutfitHandler(webapp2.RequestHandler):
-
-    def get(self):
-        template = JINJA_ENVIRONMENT.get_template('outfit-feedback.html')
-        self.response.write(template.render())
-
-
             
         
 application = webapp2.WSGIApplication(
@@ -164,7 +156,6 @@ application = webapp2.WSGIApplication(
         ('/thank_you', ThankYouPageHandler),
         ('/home', homeHandler),
         ('/contact', contactHandler),
-        ('/choose-outfit', chooseOutfitHandler),
-        ('/rateOutfit', rateOutfitHandler)
+        ('/choose-outfit', chooseOutfitHandler)
     ],
                               debug=True)
