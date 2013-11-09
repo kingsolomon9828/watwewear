@@ -6,6 +6,7 @@ import pickle
 import urllib2
 import httplib
 import json
+import datetime
 import mimetypes
 
 #from apiclient.discovery import build
@@ -16,7 +17,7 @@ from apiclient.http import MediaFileUpload
 from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.api import images
-from google.appengine.ext import db
+from google.appengine.ext import ndb
 import webapp2
 import jinja2
 import oauth2client.appengine
@@ -27,11 +28,18 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     autoescape=True,
     extensions=['jinja2.ext.autoescape'])
+
+class User(ndb.Model):
+    username = ndb.UserProperty()
+    top = ndb.JsonProperty(required=True)
+    bottom = ndb.JsonProperty(required=True)
+    shoes = ndb.JsonProperty(required=True)
+
     
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        if user:
+        currentUser = users.get_current_user()
+        if currentUser:
             greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
                           (user.nickname(), users.create_logout_url('/')))
         else:
@@ -40,6 +48,66 @@ class MainPage(webapp2.RequestHandler):
                         
         template = JINJA_ENVIRONMENT.get_template('home.html')
         self.response.write(template.render({'greeting': greeting}))
+        
+class FormHandler(webapp2.RequestHandler):
 
-application = webapp2.WSGIApplication([('/', MainPage)],
+    def get(self):
+        user = users.get_current_user()
+        template = JINJA_ENVIRONMENT.get_template('choose-outfit.html')
+        self.response.write(template.render({'user': user}))
+    
+class ThankYouPageHandler(webapp2.RequestHandler):
+
+    def post(self):
+        day = cgi.escape(self.request.get('day_of_week'))
+        top_category = cgi.escape(self.request.get('top_category'))
+        top_presence = cgi.escape(self.request.get('top_presence'))
+        top_color_presence = cgi.escape(self.request.get('top_color_presence'))
+        top_clothing_color = cgi.escape(self.request.get('top_clothing_color'))
+        #top_img = cgi.escape(self.request.get('top_img'))
+        bot_category = cgi.escape(self.request.get('bot_category'))
+        bot_presence = cgi.escape(self.request.get('bot_presence'))
+        bot_color_presence = cgi.escape(self.request.get('bot_color_presence'))
+        bot_clothing_color = cgi.escape(self.request.get('bot_clothing_color'))
+        #bot_img = cgi.escape(self.request.get('bot_img'))
+        shoe_type = cgi.escape(self.request.get('shoe_type'))
+        shoe_color = cgi.escape(self.request.get('shoe_color'))
+        #shoe_img = cgi.escape(self.request.get('shoe_img'))
+        newUser = User()
+        newUser.username = users.get_current_user()
+        date = str(datetime.datetime.utcnow())
+        newUser.top = {date : {"day": day,
+                        "top_category": top_category,
+                        "top_presence": top_presence,
+                        "top_color_presence": top_color_presence,
+                        "top_clothing_color": top_clothing_color,
+                        "top_img": "",                        
+                      }}
+        newUser.bottom = {date : {"day": day,
+                        "bot_category": bot_category,
+                        "bot_presence": bot_presence,
+                        "bot_color_presence": bot_color_presence,
+                        "bot_clothing_color": bot_clothing_color,
+                        "bot_img": "",
+                        }}
+        newUser.shoes = {date : {"day": day,
+                        "shoe_type": shoe_type,
+                        "shoe_color": shoe_color,
+                        }}
+        newUser.put()
+        html = '<html><body><h1>Thank you for Submitting</h1></body></html>' 
+        self.response.out.write(html)
+        #template = JINJA_ENVIRONMENT.get_template('thank_you.html')
+        #self.response.write(template.render())
+     
+        
+
+        
+        
+application = webapp2.WSGIApplication(
+    [
+        ('/', MainPage),
+        ('/outfitform', FormHandler),
+        ('/thank_you', ThankYouPageHandler)
+    ],
                               debug=True)

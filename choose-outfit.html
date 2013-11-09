@@ -1,101 +1,156 @@
-		
-
+<html>		
 <body>
 
-
-
+<h3>Welcome {{ user }}</h3>
 <h1><a>Choose Outfit Preferences</a></h1>
-
+<form id="form_739058" class="appnitro"  enctype="multipart/form-data" method="post" action="/thank_you">
 <div class="form_description">
-			
-    <p><h3>Top</h3><input type="file" name="top"></p>
-
-    <p><h3>Bottom</h3><input type="file" name="bottom"></p>
-
-    <p><h3>Shoe</h3><input type="file" name="shoe"></p>
-
+                <ul>
+                            <p>
+		<label>Select Day of the Week </label>
+		<span>
+			<input  name="day_of_week" class="element checkbox" type="checkbox" value="Sun" />
+                <label class="choice" for="element_4_1">Sun</label>
+                <input name="day_of_week" class="element checkbox" type="checkbox" value="Mon" />
+                <label class="choice" for="element_4_2">Mon</label>
+                <input name="day_of_week" class="element checkbox" type="checkbox" value="Tue" />
+                <label class="choice" for="element_4_3">Tue</label>
+                <input name="day_of_week" class="element checkbox" type="checkbox" value="Wed" />
+                <label class="choice" for="element_4_4">Wed</label>
+                <input name="day_of_week" class="element checkbox" type="checkbox" value="Thur" />
+                <label class="choice" for="element_4_5">Thur</label>
+                <input name="day_of_week" class="element checkbox" type="checkbox" value="Fri" />
+                <label class="choice" for="element_4_6">Fri</label>
+                <input name="day_of_week" class="element checkbox" type="checkbox" value="Sat" />
+                <label class="choice" for="element_4_6">Sat</label>
+		</span>
+        </p>
+                </ul>
+    <p><h3>Top</h3></p>
+<!-- HTML code for top-->
 </div>
-		<form id="form_739058" class="appnitro"  method="post" action="/formbuilder/view.php">
-								
-			<ul >
-			
-					<li id="li_1" >
+			<ul>
 		<label class="description" for="element_1">Clothing Category </label>
 		<div>
-		<select class="element select medium" id="clothing_category" name="clothing_category"> 
+		<select class="element select medium" id="clothing_category" name="top_category"> 
 			<option value="" selected="selected"></option>
-<option value="1" >Casual</option>
-<option value="2" >Business</option>
-
+            <option value="Casual" >Casual</option>
+            <option value="Business" >Business</option>
 		</select>
 		</div> 
-		</li>		<li id="li_2" >
-		<label class="description" for="element_2">Clothing Presence </label>
+		 		
+                <label class="description" for="element_2">Clothing Presence </label>
 		<div>
-		<select class="element select medium" id="clothing_presence" name="clothing_presence"> 
+		<select class="element select medium" id="clothing_presence" name="top_presence"> 
 			<option value="" selected="selected"></option>
-<option value="1" >Dress</option>
-<option value="2" >Suit</option>
-<option value="3" >Shirt and Pants</option>
-
+            <option value="Dress" >Dress</option>
+            <option value="Suit" >Suit</option>
+            <option value="Shirt and Pants" >Shirt and Pants</option>
 		</select>
 		</div> 
-		</li>		<li id="li_3" >
 		<label class="description" for="element_3">Do you have a color presence </label>
 		<span>
-			<input id="color_presence" name="color_presence" class="element radio" type="radio" value="1" />
-<label class="choice" for="element_3_1">Yes</label>
-<input id="color_presence" name="color_presence" class="element radio" type="radio" value="2" />
-<label class="choice" for="element_3_2">No</label>
-
-		</span> 
-		</li>		<li id="li_4" >
+			<input id="color_presence" name="top_color_presence" class="element radio" type="radio" value="yes" />
+        <label class="choice" for="element_3_1">Yes</label>
+        <input id="color_presence" name="top_color_presence" class="element radio" type="radio" value="no" />
+        <label class="choice" for="element_3_2">No</label>
+		</span>
+        <p>
 		<label class="description" for="element_4">Select Clothing Color </label>
 		<span>
-			<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Black" />
-<label class="choice" for="element_4_1">Black</label>
-<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Red" />
-<label class="choice" for="element_4_2">Red</label>
-<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Yellow" />
-<label class="choice" for="element_4_3">Yellow</label>
-<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Green" />
-<label class="choice" for="element_4_4">Green</label>
-<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Blue" />
-<label class="choice" for="element_4_5">Blue</label>
-<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="White" />
-<label class="choice" for="element_4_6">White</label>
-
-		</span> 
-		</li>		<li id="li_5" >
+			<input id="clothing_color" name="top_clothing_color" class="element checkbox" type="checkbox" value="Black" />
+                <label class="choice" for="element_4_1">Black</label>
+                <input id="clothing_color" name="top_clothing_color" class="element checkbox" type="checkbox" value="Red" />
+                <label class="choice" for="element_4_2">Red</label>
+                <input id="clothing_color" name="top_clothing_color" class="element checkbox" type="checkbox" value="Yellow" />
+                <label class="choice" for="element_4_3">Yellow</label>
+                <input id="clothing_color" name="top_clothing_color" class="element checkbox" type="checkbox" value="Green" />
+                <label class="choice" for="element_4_4">Green</label>
+                <input id="clothing_color" name="top_clothing_color" class="element checkbox" type="checkbox" value="Blue" />
+                <label class="choice" for="element_4_5">Blue</label>
+                <input id="clothing_color" name="top_clothing_color" class="element checkbox" type="checkbox" value="White" />
+                <label class="choice" for="element_4_6">White</label>
+		</span>
+        </p>
+        <!--
+		<input type="file" name="top_img">
+        -->
+        <p><h3>Bottom</h3></p>
+        <!-- html code for bottom-->
+        		<label class="description" for="element_1">Clothing Category </label>
+		<div>
+		<select class="element select medium" id="clothing_category" name="bot_category"> 
+			<option value="" selected="selected"></option>
+            <option value="Casual" >Casual</option>
+            <option value="Business" >Business</option>
+		</select>
+		</div> 
+		 		
+                <label class="description" for="element_2">Clothing Presence </label>
+		<div>
+		<select class="element select medium" id="clothing_presence" name="bot_presence"> 
+			<option value="" selected="selected"></option>
+            <option value="Pants" >Pants</option>
+            <option value="Jeans" >Jeans</option>
+            <option value="Skirt" >Skirt</option>
+		</select>
+		</div> 
+		<label class="description" for="element_3">Do you have a color presence </label>
+		<span>
+			<input id="color_presence" name="bot_color_presence" class="element radio" type="radio" value="yes" />
+        <label class="choice" for="element_3_1">Yes</label>
+        <input id="color_presence" name="bot_color_presence" class="element radio" type="radio" value="no" />
+        <label class="choice" for="element_3_2">No</label>
+		</span>
+        <p>
+		<label class="description" for="element_4">Select Clothing Color </label>
+		<span>
+			<input id="clothing_color" name="bot_clothing_color" class="element checkbox" type="checkbox" value="Black" />
+                <label class="choice" for="element_4_1">Black</label>
+                <input id="clothing_color" name="bot_clothing_color" class="element checkbox" type="checkbox" value="Red" />
+                <label class="choice" for="element_4_2">Red</label>
+                <input id="clothing_color" name="bot_clothing_color" class="element checkbox" type="checkbox" value="Yellow" />
+                <label class="choice" for="element_4_3">Yellow</label>
+                <input id="clothing_color" name="bot_clothing_color" class="element checkbox" type="checkbox" value="Green" />
+                <label class="choice" for="element_4_4">Green</label>
+                <input id="clothing_color" name="bot_clothing_color" class="element checkbox" type="checkbox" value="Blue" />
+                <label class="choice" for="element_4_5">Blue</label>
+                <input id="clothing_color" name="bot_clothing_color" class="element checkbox" type="checkbox" value="White" />
+                <label class="choice" for="element_4_6">White</label>
+		</span>
+        </p>
+        <!--
+        <input type="file" name="bot_img">
+        -->
+        <p><h3>Shoe</h3></p>
+        <!-- html code for shoes -->
 		<label class="description" for="element_5">Select Shoe Type </label>
 		<div>
 		<select class="element select medium" id="shoe_type" name="shoe_type"> 
 			<option value="" selected="selected"></option>
-<option value="1" >Dress up</option>
-<option value="2" >Causual</option>
-<option value="3" >Athletic</option>
-
+            <option value="Dress Up" >Dress up</option>
+            <option value="Casual" >Casual</option>
+            <option value="Athletic" >Athletic</option>
 		</select>
 		</div> 
-		</li>		<li id="li_6" >
 		<label class="description" for="element_6">Select Shoe Color </label>
 		<div>
 		<select class="element select medium" id="shoe_color" name="shoe_color"> 
 			<option value="" selected="selected"></option>
-<option value="1" >Black</option>
-<option value="2" >Brown</option>
-<option value="3" >White</option>
-<option value="4" >Blue</option>
-
+            <option value="Black" >Black</option>
+            <option value="Brown" >Brown</option>
+            <option value="White" >White</option>
+            <option value="Blue" >Blue</option>
+            <option value="Red" >Red</option>
+            <option value="Beige" >Beige</option>
+            <option value="Grey" >Grey</option>
 		</select>
-		</div> 
-		</li>
-			
-					<li class="buttons">
-			    <input type="hidden" name="form_id" value="739058" />
-			    
-				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
-		</li>
+		</div>
+        <!--        
+		<input type="file" name="shoe_img">
+        -->
+		<p><input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" /></p>
+		 
 			</ul>
 		</form>	
 </body>
