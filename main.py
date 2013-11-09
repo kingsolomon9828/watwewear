@@ -42,7 +42,7 @@ class QueryTest(webapp2.RequestHandler):
         requestQuery = User.query(User.username == users.get_current_user())
         response = requestQuery.get()
         self.response.out.write(dir(response))
-        self.response.out.write(response.top())
+        self.response.out.write(json.dumps(response.top))
     
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -83,7 +83,7 @@ class ThankYouPageHandler(webapp2.RequestHandler):
         #shoe_img = cgi.escape(self.request.get('shoe_img'))
         newUser = User()
         newUser.username = users.get_current_user()
-        date = str(datetime.datetime.utcnow())
+        date = datetime.datetime.now().strftime("%m%d%y")
         newUser.top = {date : {"day": day,
                         "top_category": top_category,
                         "top_presence": top_presence,
