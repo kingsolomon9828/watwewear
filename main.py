@@ -42,7 +42,7 @@ class QueryTest(webapp2.RequestHandler):
         requestQuery = User.query(User.username == users.get_current_user())
         response = requestQuery.get()
         self.response.out.write(dir(response))
-        self.response.out.write(response.top)
+        self.response.out.write(response.top())
     
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -109,6 +109,12 @@ class ThankYouPageHandler(webapp2.RequestHandler):
         #self.response.write(template.render())
              
 
+class AboutHandler(webapp2.RequestHandler):
+
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('about.html')
+        self.response.write(template.render())
+    
         
         
 application = webapp2.WSGIApplication(
@@ -116,6 +122,7 @@ application = webapp2.WSGIApplication(
         ('/', MainPage),
         ('/outfitform', FormHandler),
         ('/query_test', QueryTest),
+        ('/about', AboutHandler),
         ('/thank_you', ThankYouPageHandler)
     ],
                               debug=True)
