@@ -169,7 +169,7 @@ class rateOutfitHandler(webapp2.RequestHandler):
  
 class ThanksHandler(webapp2.RequestHandler):
 
-    def get(self):
+    def post(self):
         user = users.get_current_user()
         template = JINJA_ENVIRONMENT.get_template('thank_you.html')
         self.response.write(template.render({'user': user}))
