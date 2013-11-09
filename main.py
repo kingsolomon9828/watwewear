@@ -154,7 +154,11 @@ class rateOutfitHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('outfit-feedback.html')
         self.response.write(template.render())
 
+class imagesHandler(webapp2.RequestHandler):
 
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('images.html')
+        self.response.write(template.render())
             
         
 application = webapp2.WSGIApplication(
@@ -167,6 +171,7 @@ application = webapp2.WSGIApplication(
         ('/home', homeHandler),
         ('/contact', contactHandler),
         ('/choose-outfit', chooseOutfitHandler),
-        ('/rateOutfit', rateOutfitHandler)
+        ('/rateOutfit', rateOutfitHandler),
+        ('/images', imagesHandler)
     ],
                               debug=True)
