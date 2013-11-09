@@ -1,11 +1,19 @@
-<html>
-    <body>
-	    <center>
-		<img src ="/static/img/Welcome.png">
-		<br>
-		<font color ="red">
-		{{ greeting|safe }}
-		</font>
-		</center>
-    </body>
-<html>
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+{{ greeting|safe }}
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <h1>Watwewear</h1>
+    <p>Have trouble finding what you want to wear?</p>
+    <p>Find out what to wear</p>
+</div>
+
+ 
+
+
+
+{% endblock %}
