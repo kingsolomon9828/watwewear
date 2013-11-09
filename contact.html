@@ -5,13 +5,20 @@
 <title>Untitled Form</title>
 <link rel="stylesheet" type="text/css" href="./colors/color1/view.css" media="all">
 <script type="text/javascript" src="js/view.js"></script>
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+{{ greeting|safe }}
 <script type="text/javascript" src="js/calendar.js"></script>
 </head>
 <body id="main_body" >
 	
 	<div id="form_container">
 	
-		<h1>Contact US</h1>
+		<h1>Contact Us</h1>
 		<form id="form_739216" class="appnitro"  method="post" action="/formbuilder/view.php">
 					<div class="form_description">
 			
@@ -40,3 +47,5 @@
 	
 	</body>
 </html>
+
+{% endblock %}

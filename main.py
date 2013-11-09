@@ -127,6 +127,12 @@ class contactHandler(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('contact.html')
         self.response.write(template.render())
+
+class chooseOutfitHandler(webapp2.RequestHandler):
+
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('choose-outfit.html')
+        self.response.write(template.render())
             
         
 application = webapp2.WSGIApplication(
@@ -137,6 +143,7 @@ application = webapp2.WSGIApplication(
         ('/about', AboutHandler),
         ('/thank_you', ThankYouPageHandler),
         ('/home', homeHandler),
-        ('/contact', contactHandler)
+        ('/contact', contactHandler),
+        ('/choose-outfit', chooseOutfitHandler)
     ],
                               debug=True)
