@@ -1,18 +1,28 @@
 		
 
 <body>
+
+
+
 <h1><a>Choose Outfit Preferences</a></h1>
+
+<div class="form_description">
+			
+    <p><h3>Top</h3><input type="file" name="top"></p>
+
+    <p><h3>Bottom</h3><input type="file" name="bottom"></p>
+
+    <p><h3>Shoe</h3><input type="file" name="shoe"></p>
+
+</div>
 		<form id="form_739058" class="appnitro"  method="post" action="/formbuilder/view.php">
-					<div class="form_description">
-			<h2>Untitled Form</h2>
-			<p>This is your form description. Click here to edit.</p>
-		</div>						
+								
 			<ul >
 			
 					<li id="li_1" >
 		<label class="description" for="element_1">Clothing Category </label>
 		<div>
-		<select class="element select medium" id="element_1" name="element_1"> 
+		<select class="element select medium" id="clothing_category" name="clothing_category"> 
 			<option value="" selected="selected"></option>
 <option value="1" >Casual</option>
 <option value="2" >Business</option>
@@ -22,43 +32,44 @@
 		</li>		<li id="li_2" >
 		<label class="description" for="element_2">Clothing Presence </label>
 		<div>
-		<select class="element select medium" id="element_2" name="element_2"> 
+		<select class="element select medium" id="clothing_presence" name="clothing_presence"> 
 			<option value="" selected="selected"></option>
-<option value="1" >Suit or Dress</option>
-<option value="2" >Shirt and Pants</option>
+<option value="1" >Dress</option>
+<option value="2" >Suit</option>
+<option value="3" >Shirt and Pants</option>
 
 		</select>
 		</div> 
 		</li>		<li id="li_3" >
 		<label class="description" for="element_3">Do you have a color presence </label>
 		<span>
-			<input id="element_3_1" name="element_3" class="element radio" type="radio" value="1" />
+			<input id="color_presence" name="color_presence" class="element radio" type="radio" value="1" />
 <label class="choice" for="element_3_1">Yes</label>
-<input id="element_3_2" name="element_3" class="element radio" type="radio" value="2" />
+<input id="color_presence" name="color_presence" class="element radio" type="radio" value="2" />
 <label class="choice" for="element_3_2">No</label>
 
 		</span> 
 		</li>		<li id="li_4" >
 		<label class="description" for="element_4">Select Clothing Color </label>
 		<span>
-			<input id="element_4_1" name="element_4_1" class="element checkbox" type="checkbox" value="1" />
+			<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Black" />
 <label class="choice" for="element_4_1">Black</label>
-<input id="element_4_2" name="element_4_2" class="element checkbox" type="checkbox" value="1" />
+<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Red" />
 <label class="choice" for="element_4_2">Red</label>
-<input id="element_4_3" name="element_4_3" class="element checkbox" type="checkbox" value="1" />
+<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Yellow" />
 <label class="choice" for="element_4_3">Yellow</label>
-<input id="element_4_4" name="element_4_4" class="element checkbox" type="checkbox" value="1" />
+<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Green" />
 <label class="choice" for="element_4_4">Green</label>
-<input id="element_4_5" name="element_4_5" class="element checkbox" type="checkbox" value="1" />
+<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="Blue" />
 <label class="choice" for="element_4_5">Blue</label>
-<input id="element_4_6" name="element_4_6" class="element checkbox" type="checkbox" value="1" />
+<input id="clothing_color" name="clothing_color" class="element checkbox" type="checkbox" value="White" />
 <label class="choice" for="element_4_6">White</label>
 
 		</span> 
 		</li>		<li id="li_5" >
 		<label class="description" for="element_5">Select Shoe Type </label>
 		<div>
-		<select class="element select medium" id="element_5" name="element_5"> 
+		<select class="element select medium" id="shoe_type" name="shoe_type"> 
 			<option value="" selected="selected"></option>
 <option value="1" >Dress up</option>
 <option value="2" >Causual</option>
@@ -69,7 +80,7 @@
 		</li>		<li id="li_6" >
 		<label class="description" for="element_6">Select Shoe Color </label>
 		<div>
-		<select class="element select medium" id="element_6" name="element_6"> 
+		<select class="element select medium" id="shoe_color" name="shoe_color"> 
 			<option value="" selected="selected"></option>
 <option value="1" >Black</option>
 <option value="2" >Brown</option>
