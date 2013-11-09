@@ -64,7 +64,7 @@ class FormHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('choose-outfit.html')
         self.response.write(template.render({'user': user}))
     
-class ThankYouPageHandler(webapp2.RequestHandler):
+class ImagesHandler(webapp2.RequestHandler):
 
     def post(self):
         day = cgi.escape(self.request.get('day_of_week'))
@@ -123,10 +123,10 @@ class ThankYouPageHandler(webapp2.RequestHandler):
                         "shoe_color": shoe_color,
                         })
         newUser.put()
-        html = '<html><body><h1>Thank you for Submitting</h1></body></html>' 
-        self.response.out.write(html)
-        #template = JINJA_ENVIRONMENT.get_template('thank_you.html')
-        #self.response.write(template.render())
+        #html = '<html><body><h1>Thank you for Submitting</h1></body></html>' 
+        #self.response.out.write(html)
+        template = JINJA_ENVIRONMENT.get_template('images.html')
+        self.response.write(template.render())
              
 
 class AboutHandler(webapp2.RequestHandler):
@@ -160,12 +160,12 @@ class rateOutfitHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('outfit-feedback.html')
         self.response.write(template.render())
 
-class imagesHandler(webapp2.RequestHandler):
+"""class imagesHandler(webapp2.RequestHandler):
 
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('images.html')
         self.response.write(template.render())
-            
+"""         
         
 application = webapp2.WSGIApplication(
     [
@@ -173,11 +173,10 @@ application = webapp2.WSGIApplication(
         ('/outfitform', FormHandler),
         ('/query_test', QueryTest),
         ('/about', AboutHandler),
-        ('/thank_you', ThankYouPageHandler),
         ('/home', homeHandler),
         ('/contact', contactHandler),
         ('/choose-outfit', chooseOutfitHandler),
         ('/rateOutfit', rateOutfitHandler),
-        ('/images', imagesHandler)
+        ('/images', ImagesHandler)
     ],
                               debug=True)
