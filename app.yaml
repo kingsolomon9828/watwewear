@@ -7,10 +7,8 @@ api_version: 1
 
 threadsafe: true
 handlers:
-- url: /clothes-pics
-  static_dir: clothes-pics 
 
-- url: /assets
+- url: /assets/*
   static_dir: assets
 
 - url: .*
