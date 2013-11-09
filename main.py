@@ -81,27 +81,39 @@ class ThankYouPageHandler(webapp2.RequestHandler):
         shoe_type = cgi.escape(self.request.get('shoe_type'))
         shoe_color = cgi.escape(self.request.get('shoe_color'))
         #shoe_img = cgi.escape(self.request.get('shoe_img'))
-        newUser = User()
+        query = User.query(User.username == users.get_current_user())
+        response = query.get()
+        if not response:
+            newUser = User()
+            newUser.top = {}
+            newUser.bottom = {}
+            newUser.shoes = {}
         newUser.username = users.get_current_user()
         date = datetime.datetime.now().strftime("%m%d%y")
-        newUser.top = {date : {"day": day,
+        if date not in newUser.top:
+            newUser.top[date] = []
+        newUser.top[date].append({"day": day,
                         "top_category": top_category,
                         "top_presence": top_presence,
                         "top_color_presence": top_color_presence,
                         "top_clothing_color": top_clothing_color,
                         "top_img": "",                        
-                      }}
-        newUser.bottom = {date : {"day": day,
+                      })
+        if date not in newUser.bottom:
+            newUser.bottom[date] = []
+        newUser.bottom[date].append({"day": day,
                         "bot_category": bot_category,
                         "bot_presence": bot_presence,
                         "bot_color_presence": bot_color_presence,
                         "bot_clothing_color": bot_clothing_color,
                         "bot_img": "",
-                        }}
-        newUser.shoes = {date : {"day": day,
+                        })
+        if date not in newUser.shoes:
+            newUser.shoes[date] = []
+        newUser.shoes[date].append({"day": day,
                         "shoe_type": shoe_type,
                         "shoe_color": shoe_color,
-                        }}
+                        })
         newUser.put()
         html = '<html><body><h1>Thank you for Submitting</h1></body></html>' 
         self.response.out.write(html)
