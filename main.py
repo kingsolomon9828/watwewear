@@ -136,7 +136,7 @@ application = webapp2.WSGIApplication(
         ('/query_test', QueryTest),
         ('/about', AboutHandler),
         ('/thank_you', ThankYouPageHandler),
-	('/home', homeHandler),
-	(/contact', contactHandler),
+        ('/home', homeHandler),
+        ('/contact', contactHandler)
     ],
                               debug=True)
