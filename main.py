@@ -36,6 +36,14 @@ class User(ndb.Model):
     shoes = ndb.JsonProperty(required=True)
 
     
+class QueryTest(webapp2.RequestHandler):
+    def get(self):
+        #query = db.Query(User)
+        requestQuery = User.query(User.username == users.get_current_user())
+        response = requestQuery.get()
+        self.response.out.write(dir(response))
+        self.response.out.write(response.top)
+    
 class MainPage(webapp2.RequestHandler):
     def get(self):
         currentUser = users.get_current_user()
@@ -99,8 +107,7 @@ class ThankYouPageHandler(webapp2.RequestHandler):
         self.response.out.write(html)
         #template = JINJA_ENVIRONMENT.get_template('thank_you.html')
         #self.response.write(template.render())
-     
-        
+             
 
         
         
@@ -108,6 +115,7 @@ application = webapp2.WSGIApplication(
     [
         ('/', MainPage),
         ('/outfitform', FormHandler),
+        ('/query_test', QueryTest),
         ('/thank_you', ThankYouPageHandler)
     ],
                               debug=True)
